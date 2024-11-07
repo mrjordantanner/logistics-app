@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-sandbox": {
+    "logistics-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-sandbox",
+            "outputPath": "dist/logistics-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-sandbox:build:production"
+              "buildTarget": "logistics-app:build:production"
             },
             "development": {
-              "buildTarget": "angular-sandbox:build:development"
+              "buildTarget": "logistics-app:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,14 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  input.ng-invalid.ng-touched {
+    border-color: red;
+  }
+  
+  small {
+    color: red;
+  }
+  

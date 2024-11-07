@@ -1,5 +1,3 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
 # Compiled output
 /dist
 /tmp
@@ -8,8 +6,8 @@
 
 # Node
 /node_modules
-npm-debug.log
-yarn-error.log
+npm-debug.log*
+yarn-error.log*
 
 # IDEs and editors
 .idea/
@@ -28,11 +26,24 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Miscellaneous
+# Angular specific files
 /.angular/cache
+/.angular/cli
+.angular-errors.log
+
+# Compiled Sass/CSS
 .sass-cache/
-/connect.lock
+/*.css.map
+*.scssc
+
+# Test and Coverage files
 /coverage
+/jest/
+.jest-test-results.json
+test-results/
+
+# Miscellaneous
+/connect.lock
 /libpeerconnection.log
 testem.log
 /typings
@@ -40,3 +51,19 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+*.log.*
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+
+# Build/Debugging artifacts
+*.stacktrace
+*.swp
+*.swo
+*.bak
+*.orig
