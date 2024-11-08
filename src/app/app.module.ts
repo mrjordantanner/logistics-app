@@ -1,24 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
-import { NavbarComponent } from '../app/shared/components/navbar/navbar.component';
+import { SharedModule } from './modules/shared.module';
+import { UserModule } from './modules/user/user.module';
+import { CommonModule } from '@angular/common';
+import { CoreModule } from './core/core.module';
+import { provideStore } from '@ngrx/store';
+import { userReducer } from './state/user/user.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { loadUsers$ } from './state/user/user.effects';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations: [AppComponent],
   imports: [
-    CommonModule,
+    CommonModule, 
     BrowserModule,
     RouterModule,
-    RouterOutlet,
     AppRoutingModule,
     SharedModule,
-
+    CoreModule,
+    UserModule,
   ],
-  exports: [RouterModule, RouterOutlet],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    provideStore({ user: userReducer }),
+    provideEffects([loadUsers$]),  // Register functional effect
+    provideAnimations(),
+  ]
 })
 export class AppModule {}

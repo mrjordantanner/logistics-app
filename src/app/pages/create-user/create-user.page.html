@@ -1,0 +1,47 @@
+<div class="fullscreen flex-container">
+  <h1>Create User</h1>
+  <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+
+      <div>
+          <label for="name">Name</label>
+          <input id="name" formControlName="name" type="name" />
+          <div *ngIf="createUserForm.get('name')?.invalid && createUserForm.get('name')?.touched">
+            <small *ngIf="createUserForm.get('name')?.errors?.['required']">Email is required.</small>
+            <small *ngIf="createUserForm.get('name')?.errors?.['name']">Please enter a name.</small>
+          </div>
+        </div>
+
+      <div>
+          <label for="email">Email</label>
+          <input id="email" formControlName="email" type="email" />
+          <div *ngIf="createUserForm.get('email')?.invalid && createUserForm.get('email')?.touched">
+            <small *ngIf="createUserForm.get('email')?.errors?.['required']">Email is required.</small>
+            <small *ngIf="createUserForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
+          </div>
+        </div>
+      
+        <div>
+          <label for="password">Password</label>
+          <input id="password" formControlName="password" type="password" />
+          <div *ngIf="createUserForm.get('password')?.invalid && createUserForm.get('password')?.touched">
+            <small *ngIf="createUserForm.get('password')?.errors?.['required']">Password is required.</small>
+            <small *ngIf="createUserForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+          </div>
+        </div>
+
+        <div>
+          <label for="role">Role</label>
+          <select id="role" formControlName="role" required>
+            <option value="" disabled>Select a role</option>
+            <option value="Admin">Admin</option>
+            <option value="Driver">Driver</option>
+          </select>
+          <div *ngIf="createUserForm.get('role')?.invalid && createUserForm.get('role')?.touched">
+            <small *ngIf="createUserForm.get('role')?.errors?.['required']">Role is required.</small>
+          </div>
+        </div>
+        
+        <button mat-flat-button [disabled]="createUserForm.invalid">Create User</button>
+
+  </form>
+</div>>

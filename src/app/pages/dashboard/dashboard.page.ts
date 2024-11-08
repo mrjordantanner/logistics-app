@@ -7,13 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class DashboardPage {
-  numberOfItems = 16;
-  items: number[] = [];
 
-  constructor() {
-    this.items = [];
-    for (let i = 0; i < 16; i++) {
-      this.items.push(i);
-    }
-  }
 }

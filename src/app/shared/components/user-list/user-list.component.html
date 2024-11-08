@@ -1,0 +1,44 @@
+<div *ngIf="loggedInUser$ | async as loggedInUser">
+    <mat-card class="logged-in-user-card">
+      <mat-card-title>Logged In User</mat-card-title>
+      <mat-card-content>
+        <p><strong>Name:</strong> {{ loggedInUser.name }}</p>
+        <p><strong>ID:</strong> {{ loggedInUser.id }}</p>
+        <p><strong>Role:</strong> {{ loggedInUser.role }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <h3>All Users</h3>
+  
+  <!-- Conditionally render either the table or noData -->
+  <mat-table [dataSource]="users" class="mat-elevation-z8" *ngIf="(users$ | async) as users; else noData">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.name }} </mat-cell>
+    </ng-container>
+  
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.id }} </mat-cell>
+    </ng-container>
+  
+    <!-- Role Column -->
+    <ng-container matColumnDef="role">
+      <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.role }} </mat-cell>
+    </ng-container>
+  
+    <!-- Header and Row Definitions -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <!-- Displayed if users$ data is null or empty -->
+  <ng-template #noData>
+    <p>No users available.</p>
+  </ng-template>
+  

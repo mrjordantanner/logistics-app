@@ -1,3 +1,4 @@
+<div class="fullscreen flex-container">
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="email">Email</label>
@@ -17,6 +18,9 @@
       </div>
     </div>
 
-    <app-button [label]="'Login'" [type]="'primary'" [enabled]="!loginForm.invalid"></app-button>
+    <div>
+      <button mat-flat-button [disabled]="loginForm.invalid">Log In</button>
+    </div>
+
   </form>
-  
+</div>

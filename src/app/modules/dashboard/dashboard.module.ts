@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.page';
+import { DashboardPage } from '../../pages/dashboard/dashboard.page';
 import { AppRoutingModule } from '../../app-routing.module';
+import { SharedModule } from '../shared.module';
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardPage],
   imports: [
     CommonModule,
     RouterModule,
     RouterOutlet,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
-  exports: [RouterModule, RouterOutlet]
+  exports: [
+    // CommonModule,
+    // RouterModule, 
+    // RouterOutlet
+  ]
 })
 export class DashboardModule {}

@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss']
 })
-export class LoginComponent {
+export class LoginPage {
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
