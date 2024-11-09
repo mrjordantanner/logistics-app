@@ -1,26 +1,32 @@
-<div class="fullscreen flex-container">
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="email">Email</label>
-      <input id="email" formControlName="email" type="email" />
-      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-        <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
-        <small *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
-      </div>
-    </div>
-  
-    <div>
-      <label for="password">Password</label>
-      <input id="password" formControlName="password" type="password" />
-      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-        <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
-        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
-      </div>
-    </div>
+<div class="fullscreen flex-center">
+  <div class="container flex-center">
+  <h1>Log In</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    
+    <!-- Email Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput id="email" formControlName="email" type="email" />
+      <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</span>
+        <span *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email.</span>
+      </mat-error>
+    </mat-form-field>
 
-    <div>
-      <button mat-flat-button [disabled]="loginForm.invalid">Log In</button>
-    </div>
+    <!-- Password Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput id="password" formControlName="password" type="password" />
+      <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>
+        <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</span>
+      </mat-error>
+    </mat-form-field>
 
+    <!-- Submit Button -->
+    <div>
+      <button mat-flat-button color="primary" [disabled]="loginForm.invalid">Log In</button>
+    </div>
   </form>
+  </div>
 </div>

@@ -1,8 +1,30 @@
 <nav class="navbar">
-    <a href="/" routerLinkActive="active">Home</a>
-    <a href="/login" routerLinkActive="active">Login</a>
-    <a href="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a href="/create" routerLinkActive="active">Create User</a>
-    <a href="/profile" routerLinkActive="active">User Profile</a>
-  </nav>
-  
+
+  <a class="logo" routerLink="/">
+    LX
+  </a>
+
+  <div class="container">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Home
+    </a>
+    <a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Login
+    </a>
+    <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Dashboard
+    </a>
+    <a routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Create User
+    </a>
+    <a routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      User Profile
+    </a>
+  </div>
+
+  <app-logout-button *ngIf="authService.isLoggedIn()" class="logo">
+    Logout
+  </app-logout-button>
+
+</nav>
+>

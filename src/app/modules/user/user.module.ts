@@ -10,10 +10,24 @@ import { SharedModule } from '../shared.module';
 import { MaterialModule } from '../material.module';
 import { UserListComponent } from '../../shared/components/user-list/user-list.component';
 import { LandingPage } from '../../pages/landing/landing.page';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from '../../state/user/user.effects';
+import { StoreModule, provideStore, provideState  } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { userReducer } from '../../state/user/user.reducer';
 
 @NgModule({
-  declarations: [CreateUserPage, UserProfilePage, LoginPage, UserListComponent, LandingPage],
+  declarations: [
+    CreateUserPage, 
+    UserProfilePage, 
+    LoginPage, 
+    UserListComponent, 
+    LandingPage
+  ],
   imports: [
+    //EffectsModule.forFeature([UserEffects]),
+    //StoreModule.forFeature({ user: userReducer }),
     CommonModule,
     RouterModule,
     RouterOutlet,
@@ -22,6 +36,12 @@ import { LandingPage } from '../../pages/landing/landing.page';
     SharedModule,
     MaterialModule,
   ],
-  exports: [RouterModule, RouterOutlet]
+  exports: [RouterModule, RouterOutlet],
+  // providers: [
+  //   provideEffects(UserEffects),
+  //   provideStore({ user: userReducer }),
+  //   provideState({ name: 'user', reducer: userReducer }),
+  //   provideAnimations(),
+  // ],
 })
 export class UserModule {}

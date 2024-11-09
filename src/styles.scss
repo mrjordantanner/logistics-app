@@ -1,31 +1,38 @@
-body {
-    height: 100vh;
-    width: 100vw;
-    background-color: rgb(207, 207, 207);
-    overflow-x: hidden;
-  }
+@import './variables.scss';
 
-  h1 {
-    font-size: 100px;
-    font-weight: bold;
+html { height: 100%; }
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0; 
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background-color: rgb(39, 39, 39);
+  overflow-x: hidden;
   }
   
-  a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-  }
+a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
 
 .fullscreen {
   height: 100vh;
-  width: 100vw;
+  width: calc(100vw - 200px);
 }
 
-.flex-container-col {
+.flex-center {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
+h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.5rem;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -11,9 +11,7 @@ export class UserProfilePage implements OnInit {
   
   user: User | undefined;
 
-  constructor(private userService: UserService) { }
-
   ngOnInit(): void {
-    // TODO display current user data
+    // TODO display current user data from State
   }
 }

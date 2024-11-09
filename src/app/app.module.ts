@@ -7,16 +7,20 @@ import { SharedModule } from './modules/shared.module';
 import { UserModule } from './modules/user/user.module';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from './core/core.module';
-import { provideStore } from '@ngrx/store';
+import { StoreModule, provideStore, provideState  } from '@ngrx/store';
 import { userReducer } from './state/user/user.reducer';
 import { provideEffects } from '@ngrx/effects';
-import { loadUsers$ } from './state/user/user.effects';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './state/user/user.effects';
+//import { userEffects } from './state/user/user.effects';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    CommonModule, 
+    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot({ user: userReducer }),
+    CommonModule,
     BrowserModule,
     RouterModule,
     AppRoutingModule,
@@ -24,11 +28,12 @@ import { provideAnimations } from '@angular/platform-browser/animations';
     CoreModule,
     UserModule,
   ],
-  bootstrap: [AppComponent],
   providers: [
+    provideEffects(UserEffects),
     provideStore({ user: userReducer }),
-    provideEffects([loadUsers$]),  // Register functional effect
+    provideState({ name: 'user', reducer: userReducer }),
     provideAnimations(),
-  ]
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
